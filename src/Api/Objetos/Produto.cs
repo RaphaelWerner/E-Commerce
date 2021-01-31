@@ -1,0 +1,16 @@
+﻿using Api.Promocao.Enum;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Api.Object
+{
+    public class Produto
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public decimal Preco { get; set; }
+        public EnumPromocao Promocao { get; set; }
+    }
+}
