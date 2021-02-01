@@ -16,22 +16,10 @@ namespace Api.Promocao
                 //Pega a descrição do EnumPromocao, que contém o nome da Classe da Promocao   
                 string descricao = new Util.Util().GetEnumDescription(produto.Promocao);
 
-                //Pega o nome do assembly, é necessário para o método GetType
-                var assemblyFullName = System.Reflection.Assembly.GetExecutingAssembly().GetName().FullName;
-                string typeString = Assembly.GetExecutingAssembly().GetName().Name + "." + descricao + "," + assemblyFullName;
+                var retorno = new Util.Util().MetodoGenerico(descricao, "CalcularDescontoPromocao", new Type[] { typeof(Produto), typeof(int) }, new object[] { produto, qtdProduto });
 
-                //Pega a Classe da Promocao vinculada ao Produto (ex: PromocaoDoisPorUm, PromocaoTresPorDez e etc)
-                Type t = Type.GetType(typeString);
-                ConstructorInfo magicConstructor = t.GetConstructor(Type.EmptyTypes);
+                return (decimal)retorno;
 
-                //Pega o Metodo que CalcularDescontoPromocao, todas as promoções implementam esse método
-                MethodInfo method = t.GetMethod("CalcularDescontoPromocao", new Type[] { typeof(Produto), typeof(int) });
-
-                //Invoca o Contrutor da Classe
-                object magicClassObject = magicConstructor.Invoke(new object[] { });
-
-                //Calcula o Desconto da Promocao
-                return (decimal)method.Invoke(magicClassObject, new object[] { produto, qtdProduto });
             }
             catch
             {
