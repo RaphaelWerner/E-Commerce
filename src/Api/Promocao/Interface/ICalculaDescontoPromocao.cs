@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Api.Promocao.Interface
 {
-    interface IPromocao
+    interface ICalculaDescontoPromocao
     {
         public decimal CalcularDescontoPromocao(Produto produto, int qtdProduto);
     }

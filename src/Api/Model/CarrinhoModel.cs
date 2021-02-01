@@ -39,7 +39,7 @@ namespace Api.Model
 			foreach (var item in carrinho.Items)
 			{
 				var produto = Dados.ProdutosDados._produtos.First(produto => produto.Id == item.IdDoProduto);
-				var valorDesconto = new Promocao.Desconto().GetDesconto(produto,item.Quantidade);
+				var valorDesconto = new Promocao.Promocao().GetDesconto(produto,item.Quantidade);
 
 				valorTotal += (produto.Preco * item.Quantidade) - valorDesconto;
 

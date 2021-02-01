@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Promocao
 {
-    public class PromocaoTresPorDez : IPromocao
+    public class PromocaoTresPorDez : ICalculaDescontoPromocao
     {
         public decimal CalcularDescontoPromocao(Produto produto, int qtdProduto)
         {
