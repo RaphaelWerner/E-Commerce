@@ -11,7 +11,7 @@ namespace Api.Pagamento
     {
         public bool ProcessarPagamento(EnumPagamento enumPagamento, decimal valor, int parcelas)
         {
-            string descricao = new Util.Util().GetEnumDescription(enumPagamento);
+            string descricao = new Util.Util().GetDescricaoEnum(enumPagamento);
 
             var retorno = new Util.Util().MetodoGenerico(descricao,"", new Type[] { typeof(decimal), typeof(int) }, new object[] { valor, parcelas });
 

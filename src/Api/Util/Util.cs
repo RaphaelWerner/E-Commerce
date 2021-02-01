@@ -9,7 +9,7 @@ namespace Api.Util
 {
     public class Util
     {
-        public string GetEnumDescription(Enum value)
+        public string GetDescricaoEnum(Enum value)
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
 

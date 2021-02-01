@@ -14,7 +14,7 @@ namespace Api.Promocao
             try
             {
                 //Pega a descrição do EnumPromocao, que contém o nome da Classe da Promocao   
-                string descricao = new Util.Util().GetEnumDescription(produto.Promocao);
+                string descricao = new Util.Util().GetDescricaoEnum(produto.Promocao);
 
                 var retorno = new Util.Util().MetodoGenerico(descricao, "CalcularDescontoPromocao", new Type[] { typeof(Produto), typeof(int) }, new object[] { produto, qtdProduto });
 
