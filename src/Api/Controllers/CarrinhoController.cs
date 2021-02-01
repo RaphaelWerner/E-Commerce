@@ -27,6 +27,12 @@ namespace Api.Controllers
 			ModelCarrinho.LimparCarrinho();
 		}
 
+		[HttpPut("RemoverItemDoCarrinho/{idDoProduto}/Quantidade/{quantidadeItem}")]
+		public int RemoverItemDoCarrinho(int idDoProduto, int quantidadeItem)
+		{
+			return ModelCarrinho.RemoverItemDoCarrinho(idDoProduto, quantidadeItem);
+		}
+
 		[HttpGet("Total")]
 		public decimal ObterTotalDoCarrinho()
 		{

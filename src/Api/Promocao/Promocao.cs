@@ -11,21 +11,16 @@ namespace Api.Promocao
     {
         public decimal GetDesconto(Produto produto, int qtdProduto)
         {
-            try
-            {
-                //Pega a descrição do EnumPromocao, que contém o nome da Classe da Promocao   
-                string descricao = new Util.Util().GetDescricaoEnum(produto.Promocao);
-
-                var retorno = new Util.Util().MetodoGenerico(descricao, "CalcularDescontoPromocao", new Type[] { typeof(Produto), typeof(int) }, new object[] { produto, qtdProduto });
-
-                return (decimal)retorno;
-
-            }
-            catch
-            {
+            if (produto.Promocao == Enum.EnumPromocao.SemPromocao)
                 return 0;
-            }
-             
+
+            //Pega a descrição do EnumPromocao, que contém o nome da Classe da Promocao   
+            string descricao = new Util.Util().GetDescricaoEnum(produto.Promocao);
+                
+            var retorno = new Util.Util().MetodoGenerico(descricao, "CalcularDescontoPromocao", new Type[] { typeof(Produto), typeof(int) }, new object[] { produto, qtdProduto });
+
+            return (decimal)retorno;
+     
         }
     }
 }

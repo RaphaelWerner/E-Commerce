@@ -32,6 +32,19 @@ namespace Api.Model
 			carrinho.Items.Clear();
 		}
 
+		public int RemoverItemDoCarrinho(int IdDoProduto, int quantidadeItem)
+        {
+			Item item = carrinho.Items.FirstOrDefault(item => item.IdDoProduto == IdDoProduto);
+			if (item == null)
+				return 0;
+
+			if (quantidadeItem >= item.Quantidade)
+				carrinho.Items.Remove(item);
+			else
+				item.Quantidade -= quantidadeItem;
+			
+			return item.IdDoProduto;
+        }
 		public decimal ObterTotalDoCarrinho()
 		{
 			decimal valorTotal = 0;
