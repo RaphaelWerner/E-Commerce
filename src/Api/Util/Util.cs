@@ -28,17 +28,13 @@ namespace Api.Util
             var assemblyFullName = System.Reflection.Assembly.GetExecutingAssembly().GetName().FullName;
             string typeString = Assembly.GetExecutingAssembly().GetName().Name + "." + classe + "," + assemblyFullName;
 
-            //Pega a Classe da Promocao vinculada ao Produto (ex: PromocaoDoisPorUm, PromocaoTresPorDez e etc)
             Type t = Type.GetType(typeString);
 
             ConstructorInfo magicConstructor = t.GetConstructor(Type.EmptyTypes);
 
-            //Pega o Metodo que CalcularDescontoPromocao, todas as promoções implementam esse método
             MethodInfo method = t.GetMethod(metodo, tipoParametros);
 
-            //Invoca o Contrutor da Classe
             object magicClassObject = magicConstructor.Invoke(new object[] { });
-
 
             var retorno = method.Invoke(magicClassObject, parametros);
 
