@@ -16,7 +16,9 @@ namespace Api.Promocao.Enum
         [Description("Promocao.PromocaoTresPorDez")]
         TresPorDez = 2,
         [Description("Promocao.PromocaoDezPorcento")]
-        PromocaoDezPorcento = 3
+        PromocaoDezPorcento = 3,
+        [Description("Promocao.PromocaoVintePorcento")]
+        PromocaoVintePorcento = 4
     }
 
 }
